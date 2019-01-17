@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { colors } from './colors';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,10 +13,12 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
-    background: #181818;
+    background: ${colors.dark};
+    color: ${colors.white}
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Montserrat', sans-serif;
+    line-height: 2rem;
   }
 `;
 

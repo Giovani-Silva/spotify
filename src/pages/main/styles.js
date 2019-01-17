@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from './../../styles/colors';
 
 export const Container = styled.div`
   height: 100%;
@@ -8,23 +9,22 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const Sidebar = styled.aside`
-  color: coral;
-  background: #090909;
-  width: 20rem;
-  flex: 1;
-`;
+
 export const Header = styled.header`
-  background: #090909;
-  color: yellow;
+  background: ${colors.black};
+  color: ${colors.success};
+  text-transform: uppercase;
+  letter-spacing: 1.11px;
+  font-weight: 700;
   height: 5rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  padding: 40px;
 `;
 export const MainContent = styled.main`
-  color: yellowgreen;
+  color: inherit;
 `;
 export const Footer = styled.footer`
-  color: crimson;
+  color: inherit;
 `;
