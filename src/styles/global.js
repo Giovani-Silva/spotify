@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'rc-slider/assets/index.css';
 import { colors } from './colors';
 
 const GlobalStyle = createGlobalStyle`
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: ${colors.dark};
-    color: ${colors.white}
+    color: ${colors.white};
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Montserrat', sans-serif;

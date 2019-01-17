@@ -1,26 +1,29 @@
 import React from 'react';
 
 import Sidebar from './../../components/Sidebar';
+import Player from './../../components/Player';
 
 import Logo from './../../assets/favicon.png';
 
-import { Container, Content, Header, MainContent, Footer } from './styles';
+import { Container, Wrapper, Content, Header, MainContent } from './styles';
 
 const Main = () => {
   return (
-    <Container>
-      <Content>
-        <Header>
-          <img src={Logo} alt="Spotify" />
-          Spotify
-        </Header>
-        <Sidebar />
-      </Content>
-      <Content>
-        <MainContent>Main</MainContent>
-        <Footer>Footer</Footer>
-      </Content>
-    </Container>
+    <Wrapper>
+      <Container>
+        <Content>
+          <Header>
+            <img src={Logo} alt="Spotify" />
+            <h1 className="logo__title">Spotify</h1>
+          </Header>
+          <Sidebar />
+        </Content>
+        <Content>
+          <MainContent>Main</MainContent>
+        </Content>
+      </Container>
+      <Player />
+    </Wrapper>
   );
 };
 

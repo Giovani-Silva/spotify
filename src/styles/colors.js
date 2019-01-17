@@ -8,7 +8,7 @@ export const colors = {
   black: '#0e0e0e',
 
   info: '#00b4eb',
-  success: '#1db954',
+  success: '#1ed760',
   warning: '#fec925',
-  danger: '#fa1e44'
+  danger: '#fa1e44',
 };
