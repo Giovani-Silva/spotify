@@ -5,7 +5,8 @@ export const Container = styled.section`
   flex: 1;
   width: 100%;
   height: 100%;
-  background: ${colors.black} linear-gradient(120deg, ${colors.success} 0%, ${colors.black} 100%);
+  background: ${colors.black};
+  background: #0e0e0e linear-gradient(160deg, #1ed760 -20%, #0e0e0e 60%, #0e0e0e 100%);
   padding: 20px;
 `;
 
