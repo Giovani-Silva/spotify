@@ -3,7 +3,7 @@ import { colors } from '../../styles/colors';
 
 export const Container = styled.div`
   width: 100%;
-  height: 4.5rem;
+  height: 6rem;
   color: inherit;
   background: ${colors.black};
   padding: 0.8rem;

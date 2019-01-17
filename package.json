@@ -6,8 +6,8 @@
   "license": "MIT",
   "author": "Giovani Silva",
   "scripts": {
-    "prod": " webpack --mode development",
-    "dev": " webpack-dev-server --mode development  --port 3000"
+    "build": " webpack --mode development",
+    "start": " webpack-dev-server --mode development  --port 3000"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     line-height: 2rem;
   }
+
+  .page__padding {
+    padding: 20px;
+  }
 `;
 
 export default GlobalStyle;

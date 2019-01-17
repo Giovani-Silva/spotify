@@ -3,29 +3,32 @@ import React from 'react';
 import SearchIcon from '../../assets/images/search.svg';
 import HomeIcon from '../../assets/images/home.svg';
 import LibraryIcon from '../../assets/images/library.svg';
-import { Container, Profile, Nav } from './styles';
+import {
+  Container, Profile, Nav, Link, Title,
+} from './styles';
 
 const Sidebar = () => (
   <Container>
+    <Title>Menu principal</Title>
     <div>
       <Nav main>
         <li>
-          <a href="">
+          <Link to="/search" activeClassName="active" exact>
             <img src={SearchIcon} alt="search" />
             Buscar
-          </a>
-        </li>
-        <li className="active">
-          <a href="">
-            <img src={HomeIcon} alt="home" />
-            Início
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="">
+          <Link to="/" activeClassName="active" exact>
+            <img src={HomeIcon} alt="home" />
+            Início
+          </Link>
+        </li>
+        <li>
+          <Link to="/library" activeClassName="active" exact>
             <img src={LibraryIcon} alt="library" />
             Sua Biblioteca
-          </a>
+          </Link>
         </li>
       </Nav>
 
@@ -34,10 +37,14 @@ const Sidebar = () => (
           <span>Tocadas recentemente</span>
         </li>
         <li>
-          <a href="">As melhores do rock</a>
+          <Link to="/playlist/1" exact>
+            As melhores do rock
+          </Link>
         </li>
         <li>
-          <a href="">Top Rock 2018</a>
+          <Link to="/playlist/2" exact>
+            Top Rock 2018
+          </Link>
         </li>
       </Nav>
     </div>

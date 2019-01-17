@@ -3,18 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
+    historyApiFallback: true,
     compress: true,
-    open: true
+    open: true,
   },
   module: {
     rules: [
@@ -22,26 +24,26 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         use: {
-          loader: 'file-loader?name=images/[name].[ext]'
-        }
+          loader: 'file-loader?name=images/[name].[ext]',
+        },
       },
       {
         test: /\.(ttf|otf|woff|woff2|eot)$/,
         use: {
-          loader: 'file-loader?&name=fonts/[name].[ext]'
-        }
-      }
-    ]
+          loader: 'file-loader?&name=fonts/[name].[ext]',
+        },
+      },
+    ],
   },
   optimization: {
     splitChunks: {
@@ -50,26 +52,26 @@ module.exports = {
           name: 'styles',
           test: /\.scss$/,
           chunks: 'all',
-          enforce: true
-        }
-      }
-    }
+          enforce: true,
+        },
+      },
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new HtmlWebpackPlugin({
       title: 'Spotify - Hi Plataform',
-      template: 'src/assets/tpl_index.html'
+      template: 'src/assets/tpl_index.html',
     }),
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
-      sourceMap: false
+      sourceMap: false,
     }),
-    new OptimizeCSSAssetsPlugin({})
-  ]
+    new OptimizeCSSAssetsPlugin({}),
+  ],
 };

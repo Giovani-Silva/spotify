@@ -1,26 +1,28 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
+import Routes from '../../routes';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import Player from '../../components/Player';
 
-import {
-  Container, Wrapper, Content, MainContent,
-} from './styles';
+import { Container, Wrapper, Content } from './styles';
 
 const Main = () => (
-  <Wrapper>
-    <Container>
-      <Content>
-        <Header />
-        <Sidebar />
-      </Content>
-      <Content>
-        <MainContent>Main</MainContent>
-      </Content>
-    </Container>
-    <Player />
-  </Wrapper>
+  <BrowserRouter>
+    <Wrapper>
+      <Container>
+        <Wrapper>
+          <Header />
+          <Sidebar />
+        </Wrapper>
+        <Content>
+          <Routes />
+        </Content>
+      </Container>
+      <Player />
+    </Wrapper>
+  </BrowserRouter>
 );
 
 export default Main;
