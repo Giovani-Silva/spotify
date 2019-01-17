@@ -5,7 +5,8 @@ export const Container = styled.aside`
   color: coral;
   background: ${colors.black};
   color: ${colors.lighten};
-  width: 13rem;
+  min-width: 13rem;
+  max-width: 20rem;
 
   flex: 1;
   display: flex;
@@ -24,6 +25,17 @@ export const Nav = styled.ul`
   }
 
   li {
+    position: relative;
+
+    &.active:before {
+      content: '';
+      width: 6px;
+      height: 100%;
+      background: ${colors.success};
+      position: absolute;
+      left: -1rem;
+    }
+
     span {
       color: ${colors.regular};
       font-size: 0.7rem;
@@ -31,23 +43,34 @@ export const Nav = styled.ul`
       letter-spacing: 1.11px;
       font-weight: 300;
     }
+
     a {
-      color: inherit;
+      display: flex;
+      align-items: center;
+      color: ${colors.lighten};
       text-decoration: none;
       color: inherit;
       font-size: 0.8rem;
-      transition: color 0.75s ease-out;
-      padding: 0.7rem;
+      transition: all 0.75s ease-out;
+      padding: 0.6rem;
       font-weight: ${props => (props.main ? 'bold' : 'normal')};
+      opacity: 0.7;
 
       &:hover {
-        color: ${colors.success};
+        opacity: 1;
+        color: ${colors.white};
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+        margin-right: 0.8rem;
       }
     }
   }
 `;
 
-export const NewPlaylist = styled.button`
+export const Profile = styled.button`
   color: ${colors.regular};
   background: transparent;
   border: 0;
@@ -67,6 +90,9 @@ export const NewPlaylist = styled.button`
   }
 
   img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
     margin-right: 10px;
   }
 `;

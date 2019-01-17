@@ -1,58 +1,50 @@
 import React from 'react';
 
-import { Container, NewPlaylist, Nav } from './styles';
-
-import AddPlaylistIcon from './../../assets/images/add_playlist.svg';
+import SearchIcon from '../../assets/images/search.svg';
+import HomeIcon from '../../assets/images/home.svg';
+import LibraryIcon from '../../assets/images/library.svg';
+import { Container, Profile, Nav } from './styles';
 
 const Sidebar = () => (
   <Container>
     <div>
       <Nav main>
         <li>
-          <a href="">Navegar</a>
+          <a href="">
+            <img src={SearchIcon} alt="search" />
+            Buscar
+          </a>
+        </li>
+        <li className="active">
+          <a href="">
+            <img src={HomeIcon} alt="home" />
+            Início
+          </a>
         </li>
         <li>
-          <a href="">Rádio</a>
-        </li>
-      </Nav>
-
-      <Nav>
-        <li>
-          <span>Sua Biblioteca</span>
-        </li>
-        <li>
-          <a href="">Seu Daily Mix</a>
-        </li>
-        <li>
-          <a href="">Tocadas recentemente</a>
-        </li>
-        <li>
-          <a href="">Músicas</a>
-        </li>
-        <li>
-          <a href="">Álbuns</a>
-        </li>
-        <li>
-          <a href="">Artistas</a>
-        </li>
-        <li>
-          <a href="">Estações</a>
+          <a href="">
+            <img src={LibraryIcon} alt="library" />
+            Sua Biblioteca
+          </a>
         </li>
       </Nav>
 
       <Nav>
         <li>
-          <span>Playlists</span>
+          <span>Tocadas recentemente</span>
         </li>
         <li>
-          <a href="">Melhores do rock</a>
+          <a href="">As melhores do rock</a>
+        </li>
+        <li>
+          <a href="">Top Rock 2018</a>
         </li>
       </Nav>
     </div>
-    <NewPlaylist>
-      <img alt="nova playlist" src={AddPlaylistIcon} />
-      Nova playlist
-    </NewPlaylist>
+    <Profile>
+      <img alt="avatar" src="https://avatars3.githubusercontent.com/u/6223139?v=4" />
+      Giovani Silva
+    </Profile>
   </Container>
 );
 
