@@ -21,7 +21,7 @@ export const List = styled.div`
 `;
 export const Title = styled.h3`
   font-weight: 700;
-  color: ${colors.lighten};
+  color: ${colors.light};
   font-size: 1.6rem;
 `;
 

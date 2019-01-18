@@ -11,7 +11,7 @@ export default function token(state = INITIAL_STATE, action) {
     case Types.SAVE_TOKEN:
       return {
         ...state,
-        token: action.payload.accessToken,
+        access_token: action.payload.accessToken,
       };
 
     default:

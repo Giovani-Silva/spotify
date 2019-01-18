@@ -23,15 +23,17 @@ class Main extends Component {
   componentDidMount() {}
 
   getAccessToken = () => {
-    if (/localhost:3000\/$/.test(window.location.href)) {
-      window.location.replace(
-        'https://accounts.spotify.com/authorize?client_id=6370e456654740c8bf8d82444a8b950b&redirect_uri=http:%2F%2Flocalhost%3A%33%30%30%30&response_type=token&state=123',
-      );
+    if (!this.props.state.token.access_token) {
+      if (/localhost:3000\/$/.test(window.location.href)) {
+        window.location.replace(
+          'https://accounts.spotify.com/authorize?client_id=6370e456654740c8bf8d82444a8b950b&redirect_uri=http:%2F%2Flocalhost%3A%33%30%30%30&response_type=token&state=123',
+        );
+      }
+      const url = window.location.href;
+      const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/)[1];
+      console.log(accessToken);
+      this.props.saveToken(accessToken);
     }
-    const url = window.location.href;
-    const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/)[1];
-    console.log(this.props);
-    this.props.saveToken(accessToken);
   };
 
   render() {
