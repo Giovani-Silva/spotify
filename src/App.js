@@ -5,6 +5,7 @@ import Routes from './routes';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Player from './components/Player';
+import Main from './pages/main';
 
 import GlobalStyle from './styles/global';
 import {
@@ -15,7 +16,8 @@ const App = () => (
   <Fragment>
     <GlobalStyle />
     <BrowserRouter>
-      <Wrapper>
+      <Main />
+      {/* <Wrapper>
         <Container>
           <Left>
             <Header />
@@ -26,7 +28,7 @@ const App = () => (
           </Content>
         </Container>
         <Player />
-      </Wrapper>
+      </Wrapper> */}
     </BrowserRouter>
   </Fragment>
 );

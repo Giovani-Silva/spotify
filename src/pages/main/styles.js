@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
-
 export const Wrapper = styled.div`
   height: 100%;
   display: flex;
@@ -22,6 +21,7 @@ export const Content = styled.div`
   background-size: 100% 250px, 100%;
   background-repeat: no-repeat;
   background-position: top;
+}
 `;
 
 export const Left = styled.div`

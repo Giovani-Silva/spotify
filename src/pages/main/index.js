@@ -6,7 +6,9 @@ import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import Player from '../../components/Player';
 
-import { Container, Wrapper, Left, Content } from './styles';
+import {
+  Container, Wrapper, Left, Content,
+} from './styles';
 
 const Main = () => (
   <BrowserRouter>
