@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import saveToken from './token';
+import token from './token';
 
 export default combineReducers({
-  saveToken,
+  token,
 });

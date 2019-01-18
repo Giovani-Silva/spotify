@@ -6,12 +6,12 @@ export const Types = {
 
 /** * REDUCERS  */
 const INITIAL_STATE = {};
-export default function saveToken(state = INITIAL_STATE, action) {
+export default function token(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SAVE_TOKEN:
       return {
         ...state,
-        token: action.payload.token,
+        token: action.payload.accessToken,
       };
 
     default:
@@ -21,8 +21,8 @@ export default function saveToken(state = INITIAL_STATE, action) {
 
 /** * ACTIONS  */
 export const Creators = {
-  saveToken: token => ({
+  saveToken: accessToken => ({
     type: Types.SAVE_TOKEN,
-    payload: { token },
+    payload: { accessToken },
   }),
 };
