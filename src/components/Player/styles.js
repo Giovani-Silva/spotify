@@ -7,6 +7,9 @@ export const Container = styled.div`
   color: inherit;
   background: ${colors.black};
   padding: 0.8rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;

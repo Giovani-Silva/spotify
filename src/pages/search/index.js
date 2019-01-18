@@ -14,7 +14,7 @@ class Search extends Component {
     return (
       <Container className="page__padding">
         <BoxSearch>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search for Songs, Artists, Albuns..." />
           <img src={SearchIcon} alt="search" aria-hidden="true" />
         </BoxSearch>
         <h2>Resultado da Pesquisa</h2>

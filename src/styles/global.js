@@ -8,17 +8,18 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+    font-family: 'Montserrat', sans-serif;
   }
 
-  html, body, #app {
-    height: 100%;
+  html, body, #app, #app > div:first-child {
+    height: 100% !important;
   }
+
   body {
-    background: ${colors.dark};
+    background: ${colors.black};
     color: ${colors.white};
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    font-family: 'Montserrat', sans-serif;
     line-height: 2rem;
   }
 
