@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import maps from './maps';
+import saveToken from './token';
 
 export default combineReducers({
-  maps
+  saveToken,
 });

@@ -5,24 +5,16 @@ import reducers from './ducks';
 import sagas from './sagas';
 
 const middlewares = [];
-const sagaMonitor =
-  process.env.NODE_ENV === 'development'
-    ? console.tron.createSagaMonitor()
-    : null;
+const sagaMonitor = process.env.NODE_ENV === 'development'
+  ? console.tron.createSagaMonitor()
+  : console.log(process.env.NODE_ENV);
 
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 middlewares.push(sagaMiddleware);
 
-const createAppropriateStore =
-  process.env.NODE_ENV === 'development'
-    ? console.tron.createStore
-    : createStore;
-const store = createAppropriateStore(
-  reducers,
-  compose(applyMiddleware(...middlewares))
-);
-
+const createAppropriateStore = process.env.NODE_ENV === 'development' ? console.tron.createStore : createStore;
+const store = createAppropriateStore(reducers, compose(applyMiddleware(...middlewares)));
 sagaMiddleware.run(sagas);
 
 export default store;

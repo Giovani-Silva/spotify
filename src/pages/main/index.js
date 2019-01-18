@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Routes from '../../routes';
 import Header from '../../components/Header';
@@ -10,21 +11,33 @@ import {
   Container, Wrapper, Left, Content,
 } from './styles';
 
-const Main = () => (
-  <BrowserRouter>
-    <Wrapper>
-      <Container>
-        <Left>
-          <Header />
-          <Sidebar />
-        </Left>
-        <Content>
-          <Routes />
-        </Content>
-      </Container>
-      <Player />
-    </Wrapper>
-  </BrowserRouter>
-);
+class Main extends Component {
+  componentWillMount() {}
 
-export default Main;
+  componentDidMount() {}
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Wrapper>
+          <Container>
+            <Left>
+              <Header />
+              <Sidebar />
+            </Left>
+            <Content>
+              <Routes />
+            </Content>
+          </Container>
+          <Player />
+        </Wrapper>
+      </BrowserRouter>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  state,
+});
+
+export default connect(mapStateToProps)(Main);

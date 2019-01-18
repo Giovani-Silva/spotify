@@ -1,35 +1,17 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import Routes from './routes';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Player from './components/Player';
+import store from './store';
 import Main from './pages/main';
 
 import GlobalStyle from './styles/global';
-import {
-  Container, Wrapper, Left, Content,
-} from './styles/app';
 
 const App = () => (
   <Fragment>
     <GlobalStyle />
-    <BrowserRouter>
+    <Provider store={store}>
       <Main />
-      {/* <Wrapper>
-        <Container>
-          <Left>
-            <Header />
-            <Sidebar />
-          </Left>
-          <Content>
-            <Routes />
-          </Content>
-        </Container>
-        <Player />
-      </Wrapper> */}
-    </BrowserRouter>
+    </Provider>
   </Fragment>
 );
 
