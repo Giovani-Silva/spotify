@@ -61,10 +61,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new HtmlWebpackPlugin({
-      title: 'Spotify - Hi Plataform',
+      title: 'Spotify',
       template: 'src/assets/tpl_index.html',
     }),
     new UglifyJsPlugin({

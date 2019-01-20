@@ -1,27 +1,90 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { Creators as SearchActions } from '../../store/ducks/search';
+
+import Filters from '../../components/Filters';
+import ListAlbuns from '../../components/ListAlbuns';
+import ListArtists from '../../components/ListArtists';
 
 import { Container, BoxSearch } from './styles';
 import SearchIcon from '../../assets/images/search.svg';
 
-import ListAlbuns from '../../components/ListAlbuns';
-
 class Search extends Component {
   state = {
+    types: {
+      artist: 'artists',
+      album: 'albums',
+      track: 'tracks',
+    },
+    selectedType: 'artist',
     inputSearch: '',
+    typingTimeout: 0,
+  };
+
+  setTypeSearch = (selectedType) => {
+    this.setState({ selectedType, inputSearch: '' });
+  };
+
+  search = (text) => {
+    if (!text) return;
+
+    const { typingTimeout, types, selectedType } = this.state;
+    const {
+      searchRequest,
+      token: { accessToken },
+    } = this.props;
+
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+
+    this.setState({
+      inputSearch: text,
+      typingTimeout: setTimeout(() => {
+        searchRequest(selectedType, types, text, accessToken);
+      }, 2000),
+    });
   };
 
   render() {
+    const { data, type } = this.props.search;
+    const { selectedType, inputSearch } = this.state;
     return (
       <Container className="page__padding">
+        <Filters setType={this.setTypeSearch} active={selectedType} />
         <BoxSearch>
-          <input type="text" placeholder="Search for Songs, Artists, Albuns..." />
+          <input
+            type="text"
+            placeholder="Digite para pesquisar..."
+            value={inputSearch}
+            onChange={e => this.search(e.target.value)}
+            autoFocus
+          />
           <img src={SearchIcon} alt="search" aria-hidden="true" />
         </BoxSearch>
-        <h2>Resultado da Pesquisa</h2>
-        <ListAlbuns />
+
+        {!!data.length && type === 'artists' && <ListArtists artists={data} />}
+
+        {!!data.length && type === 'albums' && <ListAlbuns albums={data} />}
+
+        {/* {!!this.props.search.data.length && this.state.selectedType === 'track' && (
+          <ListAlbuns albuns={this.props.search.data} />
+        )} */}
       </Container>
     );
   }
 }
 
-export default Search;
+const mapStateToProps = state => ({
+  token: state.token,
+  search: state.search,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(SearchActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Search);

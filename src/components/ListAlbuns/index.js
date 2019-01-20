@@ -1,44 +1,30 @@
 import React from 'react';
 
 import {
-  Container, List, Title, Playlist,
+  Container, List, Title, Playlist, Cover,
 } from './styles';
-import Cover from '../../assets/album-cover.png';
 
-const ListAlbuns = () => (
+const isVariousArtists = artists => artists.length > 1;
+const resumeName = (name) => {
+  if (name.length > 40) return `${name.slice(0, 40)}...`;
+
+  return name;
+};
+
+const ListAlbuns = ({ albums }) => (
   <Container>
     <Title>Albuns</Title>
     <List>
-      <Playlist href="">
-        <img src={Cover} alt="Playlist" />
-        <strong>Rock dos bons</strong>
-        <p>Relaxe enquanto você programa ouvindo as melhores do rock</p>
-      </Playlist>
-      <Playlist href="">
-        <img src={Cover} alt="Playlist" />
-        <strong>Rock Metal</strong>
-        <p>Relaxe com as clássicas</p>
-      </Playlist>
-      <Playlist href="">
-        <img src={Cover} alt="Playlist" />
-        <strong>Surf Rock</strong>
-        <p>Relaxe nas ondas das guitarras</p>
-      </Playlist>
-      <Playlist href="">
-        <img src={Cover} alt="Playlist" />
-        <strong>Rock dos bons</strong>
-        <p>Relaxe enquanto você programa ouvindo as melhores do rock</p>
-      </Playlist>
-      <Playlist href="">
-        <img src={Cover} alt="Playlist" />
-        <strong>Rock Metal</strong>
-        <p>Relaxe com as clássicas</p>
-      </Playlist>
-      <Playlist href="">
-        <img src={Cover} alt="Playlist" />
-        <strong>Surf Rock</strong>
-        <p>Relaxe nas ondas das guitarras</p>
-      </Playlist>
+      {albums.map(({
+        id, artists, images, name, total_tracks: tracks,
+      }) => (
+        <Playlist key={id} href="/albums/id">
+          <Cover images={images} />
+          <strong>{`${resumeName(name)}`}</strong>
+          <p>{isVariousArtists(artists) ? 'Various Artists' : artists[0].name}</p>
+          <p>{`${tracks} tracks`}</p>
+        </Playlist>
+      ))}
     </List>
   </Container>
 );

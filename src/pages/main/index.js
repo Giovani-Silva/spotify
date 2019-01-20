@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import ls from 'local-storage';
 
 import Routes from '../../routes';
 import { Creators as TokenActions } from '../../store/ducks/token';
+
+import spotify from '../../config/keys';
 
 // Components
 import Header from '../../components/Header';
@@ -22,17 +25,32 @@ class Main extends Component {
 
   componentDidMount() {}
 
+  redirectToSpotifyLogin = () => window.location.replace(
+    `${spotify.URL_ACCOUNT_LOGIN}client_id=${spotify.CLIENT_ID}&redirect_uri=${
+      spotify.REDIRECT_URI
+    }&response_type=token&state=123`,
+  );
+
   getAccessToken = () => {
-    if (!this.props.state.token.access_token) {
+    const token = ls.get('token') || null;
+    
+    if (token) this.props.saveToken(token);
+
+    if (!token) {
       if (/localhost:3000\/$/.test(window.location.href)) {
-        window.location.replace(
-          'https://accounts.spotify.com/authorize?client_id=6370e456654740c8bf8d82444a8b950b&redirect_uri=http:%2F%2Flocalhost%3A%33%30%30%30&response_type=token&state=123',
-        );
+        this.redirectToSpotifyLogin();
+        return;
       }
       const url = window.location.href;
-      const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/)[1];
-      console.log(accessToken);
-      this.props.saveToken(accessToken);
+      const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/);
+      const hasTokenUrl = !!accessToken;
+      if (!hasTokenUrl) {
+        this.redirectToSpotifyLogin();
+        return;
+      }
+      this.props.saveToken(accessToken[1]);
+      ls.set('token', accessToken[1]);
+      window.history.replaceState(null, null, window.location.pathname);
     }
   };
 

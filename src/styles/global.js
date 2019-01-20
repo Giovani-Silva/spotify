@@ -23,9 +23,14 @@ const GlobalStyle = createGlobalStyle`
     line-height: 2rem;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   .page__padding {
     padding: 20px;
   }
+
 `;
 
 export default GlobalStyle;

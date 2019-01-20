@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
-
 import ArtistIcon from '../../assets/images/artist_icon.svg';
 
 export const Container = styled.div`
@@ -29,6 +28,7 @@ export const Title = styled.h3`
 
 export const Playlist = styled.a`
   display: flex;
+  text-align: center;
   flex-direction: column;
   text-decoration: none;
   color: ${colors.light};
@@ -36,16 +36,14 @@ export const Playlist = styled.a`
   margin: 0 2rem 2rem;
 
   &:hover  div {
-      opacity: 0.8;
+      opacity: 0.6;
     }
   }
 
-  img {
-    width: 100%;
-  }
-
   strong {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    margin-top: 0.9rem;
+    letter-spacing: 1.11px;
     margin-top: 0.9rem;
     height: 4rem;
   }
@@ -66,6 +64,35 @@ export const Cover = styled.div`
   background-color: ${colors.dark};
   background-image: ${({ images }) => (images.length ? `url(${images[0].url})` : `url(${ArtistIcon})`)};
   background-size: ${({ images }) => (images.length ? 'cover' : '50%')};
+  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
+`;
+
+const levelColor = {
+  Hot: colors.danger,
+  Cool: colors.info,
+  Regular: colors.lighten,
+  Underground: colors.regular,
+};
+
+export const Tag = styled.small`
+  color: ${({ level }) => levelColor[level]};
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    border: ${({ level }) => `3px solid ${levelColor[level]}`};
+    width: 2.3rem;
+    height: 2.3rem;
+    color: ${({ level }) => levelColor[level]};
+    padding: 5px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
