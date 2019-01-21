@@ -26,22 +26,13 @@ const AlbumDetail = () => (
         <th>Artist</th>
         <th>Album</th>
         <th>
-          <img src={ClockIcon} alt="Duration" />
+          <img src={`/${ClockIcon}`} alt="Duration" />
         </th>
       </thead>
       <tbody>
         <tr>
           <td>
-            <img src={PlusIcon} alt="Play" />
-          </td>
-          <td>Believe</td>
-          <td>Imagine Dragons</td>
-          <td>Origins</td>
-          <td>3:02</td>
-        </tr>
-        <tr>
-          <td>
-            <img src={PlusIcon} alt="Play" />
+            <img src={`/${PlusIcon}`} alt="Play" />
           </td>
           <td>Believe</td>
           <td>Imagine Dragons</td>

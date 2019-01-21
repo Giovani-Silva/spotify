@@ -6,7 +6,7 @@ import Search from '../pages/search';
 import Me from '../pages/me';
 
 import Artist from '../pages/artist';
-import AlbumDetail from '../pages/AlbumDetail';
+import AlbumDetail from '../pages/album';
 
 const Routes = () => (
   <Switch>

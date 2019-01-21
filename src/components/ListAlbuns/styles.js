@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { colors } from '../../styles/colors';
 
 import ArtistIcon from '../../assets/images/artist_icon.svg';
@@ -28,7 +30,7 @@ export const Title = styled.h3`
   font-size: 1.6rem;
 `;
 
-export const Playlist = styled.a`
+export const Playlist = styled(Link)`
   display: flex;
   flex-direction: column;
   text-decoration: none;
