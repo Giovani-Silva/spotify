@@ -79,19 +79,17 @@ export const Link = styled(NavLink)`
   }
 `;
 
-export const Profile = styled.button`
-  color: ${colors.regular};
-  background: transparent;
-  border: 0;
+export const Profile = styled(NavLink)`
+  text-decoration: none;
+  color: ${colors.light};
   border-top: 1px solid ${colors.darken};
   font-size: 0.8rem;
+  font-weight: 700;
 
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px 25px;
-
-  cursor: pointer;
   transition: color 0.5s ease-out;
 
   &:hover {

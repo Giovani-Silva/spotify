@@ -20,7 +20,7 @@ const ListArtists = ({ artists }) => (
       }) => {
         const level = checkPopularity(popularity);
         return (
-          <Playlist key={id} href={`/artist/${id}`}>
+          <Playlist key={id} to={`/artists/${id}`}>
             <Cover images={images} />
             <strong>{name}</strong>
             <Tag level={level}>

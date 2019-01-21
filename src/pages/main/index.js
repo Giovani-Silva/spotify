@@ -6,6 +6,7 @@ import ls from 'local-storage';
 
 import Routes from '../../routes';
 import { Creators as TokenActions } from '../../store/ducks/token';
+import { Creators as MeActions } from '../../store/ducks/me';
 
 import spotify from '../../config/keys';
 
@@ -23,18 +24,19 @@ class Main extends Component {
     this.getAccessToken();
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    // this.props.meRequest(this.props.state.token)
+  }
 
   redirectToSpotifyLogin = () => window.location.replace(
-    `${spotify.URL_ACCOUNT_LOGIN}client_id=${spotify.CLIENT_ID}&redirect_uri=${
-      spotify.REDIRECT_URI
-    }&response_type=token&state=123`,
+    `${spotify.URL_ACCOUNT_LOGIN}client_id=${spotify.CLIENT_ID}&scope=${
+      spotify.SCOPE
+    }&response_type=token&redirect_uri=${spotify.REDIRECT_URI}`,
   );
 
-  getAccessToken = () => {
-    const token = ls.get('token') || null;
-    
-    if (token) this.props.saveToken(token);
+  getAccessToken = async () => {
+    const {accessToken:token } = this.props.state.token;
+    const {saveToken } = this.props;
 
     if (!token) {
       if (/localhost:3000\/$/.test(window.location.href)) {
@@ -43,18 +45,21 @@ class Main extends Component {
       }
       const url = window.location.href;
       const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/);
-      const hasTokenUrl = !!accessToken;
-      if (!hasTokenUrl) {
+      // const hasTokenUrl = !!accessToken;
+      if (!accessToken) {
         this.redirectToSpotifyLogin();
         return;
       }
-      this.props.saveToken(accessToken[1]);
-      ls.set('token', accessToken[1]);
+      await saveToken(accessToken[1]);
+      // ls.set('token', accessToken[1]);
       window.history.replaceState(null, null, window.location.pathname);
     }
+    // this.props.meRequest(this.props.state.token)
+    
   };
 
   render() {
+ 
     return (
       <BrowserRouter>
         <Wrapper>
@@ -78,7 +83,7 @@ const mapStateToProps = state => ({
   state,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(TokenActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...TokenActions, ...MeActions }, dispatch);
 
 export default connect(
   mapStateToProps,

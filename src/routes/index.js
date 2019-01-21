@@ -3,19 +3,18 @@ import { Switch, Route } from 'react-router-dom';
 
 import Start from '../pages/start';
 import Search from '../pages/search';
-import Albuns from '../pages/_albuns';
+import Me from '../pages/me';
+
+import Artist from '../pages/artist';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/search" component={Search} />
     <Route exact path="/" component={Start} />
+    <Route exact path="/search" component={Search} />
     <Route exact path="/library" component={Start} />
-    {/** Filters */}
-    {/* <Route exact path="/top" component={Start} />
-    <Route exact path="/artists" component={Start} />
-    <Route exact path="/albuns" component={Albuns} />
-    <Route exact path="/tracks" component={Start} />
-    <Route exact path="/gender" component={Start} /> */}
+    <Route exact path="/me" component={Me} />
+    <Route exact path="/artists/:id" component={Artist} />
+    <Route path="/albums/:id" component={Artist} />
   </Switch>
 );
 

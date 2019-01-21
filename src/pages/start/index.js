@@ -7,7 +7,7 @@ import ListAlbuns from '../../components/ListAlbuns';
 const Start = () => (
   <Container className="page__padding">
     <h2>Navegar</h2>
-    <ListAlbuns />
+    <ListAlbuns albums={[]}/>
   </Container>
 );
 

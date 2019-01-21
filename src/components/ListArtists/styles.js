@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { colors } from '../../styles/colors';
 import ArtistIcon from '../../assets/images/artist_icon.svg';
 
@@ -26,7 +27,7 @@ export const Title = styled.h3`
   font-size: 1.6rem;
 `;
 
-export const Playlist = styled.a`
+export const Playlist = styled(Link)`
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -35,7 +36,7 @@ export const Playlist = styled.a`
   max-width: 12.5rem;
   margin: 0 2rem 2rem;
 
-  &:hover  div {
+  &:hover  div:first-child {
       opacity: 0.6;
     }
   }
