@@ -20,12 +20,14 @@ import {
 } from './styles';
 
 class Main extends Component {
-  componentWillMount() {
-    this.getAccessToken();
+  async componentWillMount() {
+    console.log('will');
+    await this.getAccessToken();
   }
 
   componentDidMount() {
     // this.props.meRequest(this.props.state.token)
+    console.log('Did');
   }
 
   redirectToSpotifyLogin = () => window.location.replace(
@@ -35,21 +37,19 @@ class Main extends Component {
   );
 
   getAccessToken = async () => {
-    console.log('Iniciou getAccessToken');
     const { accessToken: token } = this.props.state.token;
     const { saveToken } = this.props;
 
     if (!token) {
-      console.log('!Token');
       const url = window.location.href;
       const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/);
-      if (!accessToken) {
-        console.log('!accessToken');
-        this.redirectToSpotifyLogin();
-      }
-      console.log('saveToken(accessToken[1])');
+
+      if (!accessToken) this.redirectToSpotifyLogin();
+
       await saveToken(accessToken[1]);
       window.history.replaceState(null, null, window.location.pathname);
+      console.log('replaceState', this.props.state.token);
+      this.props.meInfoRequest(this.props.state.token.accessToken);
     }
   };
 

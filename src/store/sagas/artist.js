@@ -14,7 +14,7 @@ export function* artistRequest(action) {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    yield put(ArtistActions.successData(info, albums));
+    yield put(ArtistActions.artistSuccess(info, albums));
   } catch (err) {
     console.tron.error(err);
   }

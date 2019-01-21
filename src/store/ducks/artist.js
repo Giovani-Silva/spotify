@@ -1,7 +1,7 @@
 /** TYPES */
 export const Types = {
-  GET_REQUEST: 'me/GET_REQUEST',
-  GET_SUCCESS: 'me/GET_SUCCESS',
+  GET_REQUEST: 'artist/GET_REQUEST',
+  GET_SUCCESS: 'artist/GET_SUCCESS',
 };
 
 /** * REDUCER  */
@@ -29,5 +29,11 @@ export default function artist(state = INITIAL_STATE, action) {
 /** * ACTIONS  */
 export const Creators = {
   artistRequest: (id, token) => ({ type: Types.GET_REQUEST, payload: { id, token } }),
-  successData: (info, albums) => ({ type: Types.GET_SUCCESS, payload: { info, albums } }),
+  artistSuccess: (info, albums) => ({
+    type: Types.GET_SUCCESS,
+    payload: {
+      info,
+      albums,
+    },
+  }),
 };

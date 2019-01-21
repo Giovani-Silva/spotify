@@ -2,15 +2,10 @@ import React from 'react';
 
 import { Container } from './styles';
 
-import Filters from '../../components/Filters';
-import ListAlbuns from '../../components/ListAlbuns';
-
-const Albuns = () => (
+const AlbumDetail = () => (
   <Container className="page__padding">
-    <Filters />
-    <h2>Albuns</h2>
-    <ListAlbuns />
+    <h2>Origins (Deluxe)</h2>
   </Container>
 );
 
-export default Albuns;
+export default AlbumDetail;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../../styles/colors';
 
 import ArtistIcon from '../../assets/images/artist_icon.svg';
+import Play from '../../assets/images/play.svg';
 
 export const Container = styled.div`
   height: 100%;
@@ -37,6 +38,19 @@ export const Playlist = styled.a`
 
   &:hover  div {
       opacity: 0.8;
+      position: relative;
+      &:before{
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-image: url(/${Play});
+        background-color: rgba(0,0,0, .6);
+        background-size: contain;
+        background-size: 25%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
     }
   }
 

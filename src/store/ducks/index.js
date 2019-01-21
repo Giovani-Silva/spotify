@@ -7,6 +7,6 @@ import artist from './artist';
 export default combineReducers({
   token,
   search,
-  // me,
+  me,
   artist,
 });

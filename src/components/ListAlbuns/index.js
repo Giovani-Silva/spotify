@@ -18,7 +18,7 @@ const ListAlbuns = ({ albums }) => (
       {albums.map(({
         id, artists, images, name, total_tracks: tracks,
       }) => (
-        <Playlist key={id} href="/albums/id">
+        <Playlist key={id} href={`/albums/${id}`}>
           <Cover images={images} />
           <strong>{`${resumeName(name)}`}</strong>
           <p>{isVariousArtists(artists) ? 'Various Artists' : artists[0].name}</p>

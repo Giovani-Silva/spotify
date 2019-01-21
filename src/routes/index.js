@@ -6,6 +6,7 @@ import Search from '../pages/search';
 import Me from '../pages/me';
 
 import Artist from '../pages/artist';
+import Album from '../pages/album';
 
 const Routes = () => (
   <Switch>
@@ -14,7 +15,7 @@ const Routes = () => (
     <Route exact path="/library" component={Start} />
     <Route exact path="/me" component={Me} />
     <Route exact path="/artists/:id" component={Artist} />
-    <Route path="/albums/:id" component={Artist} />
+    <Route path="/albums/:id" component={Album} />
   </Switch>
 );
 

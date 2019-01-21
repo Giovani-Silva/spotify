@@ -28,6 +28,6 @@ export default function me(state = INITIAL_STATE, action) {
 
 /** * ACTIONS  */
 export const Creators = {
-  meRequest: token => ({ type: Types.GET_REQUEST, payload: { token } }),
+  meInfoRequest: token => ({ type: Types.GET_REQUEST, payload: { token } }),
   successData: data => ({ type: Types.GET_SUCCESS, payload: { data } }),
 };
