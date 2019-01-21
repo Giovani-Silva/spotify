@@ -15,7 +15,6 @@ const Sidebar = ({ me }) => {
   const {
     data: { display_name, images },
   } = me;
-  console.log(display_name);
   return (
     <Container>
       <Title>Menu principal</Title>

@@ -19,6 +19,7 @@ export const Info = styled.div`
 export const Title = styled.h2`
   font-size: 2rem;
 `;
+
 export const Cover = styled.div`
   width: 200px;
   height: 200px;
