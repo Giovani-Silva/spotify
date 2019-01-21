@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
+import ArtistIcon from '../../assets/images/artist_icon.svg';
 
 export const Container = styled.div`
   margin: 2rem;
@@ -24,7 +25,7 @@ export const Cover = styled.div`
   max-width: 300px;
   max-height: 300px;
   background-color: ${colors.dark};
-  background-image: ${({ images }) => (images.length ? `url(${images[0].url})` : `url(${ArtistIcon})`)};
+  background-image: ${({ images }) => (images.length ? `url(${images[0].url})` : `url(/${ArtistIcon})`)};
   background-size: ${({ images }) => (images.length ? 'cover' : '50%')};
   border-radius: 50%;
   background-position: center;

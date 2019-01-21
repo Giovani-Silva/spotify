@@ -14,6 +14,21 @@ class Artist extends Component {
   static propTypes = {
     token: PropTypes.string.isRequired,
     artistRequest: PropTypes.func.isRequired,
+    artist: PropTypes.shape({
+      info: PropTypes.shape({
+        images: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+          }),
+        ),
+        name: PropTypes.string,
+        popularity: PropTypes.number,
+        followers: PropTypes.shape({
+          total: PropTypes.number,
+        }),
+        genres: PropTypes.arrayOf(PropTypes.string),
+      }),
+    }).isRequired,
   };
 
   async componentWillMount() {
@@ -52,6 +67,7 @@ class Artist extends Component {
         </div>
       );
     }
+    return false;
   };
 
   render() {
