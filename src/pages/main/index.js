@@ -35,31 +35,25 @@ class Main extends Component {
   );
 
   getAccessToken = async () => {
-    const {accessToken:token } = this.props.state.token;
-    const {saveToken } = this.props;
+    console.log('Iniciou getAccessToken');
+    const { accessToken: token } = this.props.state.token;
+    const { saveToken } = this.props;
 
     if (!token) {
-      if (/localhost:3000\/$/.test(window.location.href)) {
-        this.redirectToSpotifyLogin();
-        return;
-      }
+      console.log('!Token');
       const url = window.location.href;
       const accessToken = url.match(/#(?:access_token)=([\S\s]*?)&/);
-      // const hasTokenUrl = !!accessToken;
       if (!accessToken) {
+        console.log('!accessToken');
         this.redirectToSpotifyLogin();
-        return;
       }
+      console.log('saveToken(accessToken[1])');
       await saveToken(accessToken[1]);
-      // ls.set('token', accessToken[1]);
       window.history.replaceState(null, null, window.location.pathname);
     }
-    // this.props.meRequest(this.props.state.token)
-    
   };
 
   render() {
- 
     return (
       <BrowserRouter>
         <Wrapper>

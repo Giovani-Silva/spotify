@@ -7,10 +7,10 @@ import { Creators as TokenActions } from '../ducks/token';
 
 export function* spotifyMeRequest(action) {
   try {
-    const { data } = yield call(api.get, '/me', {
-      headers: { Authorization: `Bearer ${action.payload.token}` },
-    });
-    yield put(MeActions.successData(data));
+    // const { data } = yield call(api.get, '/me', {
+    //   headers: { Authorization: `Bearer ${action.payload.token}` },
+    // });
+    // yield put(MeActions.successData(data));
   } catch (err) {
     // console.tron.error(err);
   }

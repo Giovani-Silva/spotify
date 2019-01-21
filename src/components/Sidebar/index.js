@@ -24,19 +24,19 @@ class Sidebar extends Component {
         <div>
           <Nav main>
             <li>
-              <Link to="/search" activeClassName="active" exact>
+              <Link to="/search">
                 <img src={SearchIcon} alt="search" />
                 Buscar
               </Link>
             </li>
             <li>
-              <Link to="/" activeClassName="active" exact>
+              <Link to="/">
                 <img src={HomeIcon} alt="home" />
                 Início
               </Link>
             </li>
             <li>
-              <Link to="/library" activeClassName="active" exact>
+              <Link to="/library">
                 <img src={LibraryIcon} alt="library" />
                 Sua Biblioteca
               </Link>
@@ -48,23 +48,18 @@ class Sidebar extends Component {
               <span>Tocadas recentemente</span>
             </li>
             <li>
-              <Link to="/playlist/1" exact>
-                As melhores do rock
-              </Link>
+              <Link to="/playlist/1">As melhores do rock</Link>
             </li>
             <li>
-              <Link to="/playlist/2" exact>
-                Top Rock 2018
-              </Link>
+              <Link to="/playlist/2">Top Rock 2018</Link>
             </li>
           </Nav>
         </div>
-       
-          {/* <Profile to="/me" exact>
+
+        {/* <Profile to="/me" exact>
             <img alt="avatar" src={images && images.length ? images[0].url : ''} />
             {display_name}
           </Profile> */}
-        
       </Container>
     );
   }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link as NavLink } from 'react-router-dom';
 
 import { colors } from '../../styles/colors';
 
@@ -63,14 +63,14 @@ export const Link = styled(NavLink)`
     color: ${colors.white};
   }
 
-  &.active:before {
+  /* &.active:before {
     content: '';
     width: 6px;
     height: 100%;
     background: ${colors.success};
     position: absolute;
     left: -1rem;
-  }
+  } */
 
   img {
     width: 24px;

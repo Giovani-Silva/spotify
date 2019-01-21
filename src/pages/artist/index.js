@@ -1,37 +1,61 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { Creators as ArtistActions } from '../../store/ducks/artist';
-
-import Cover from '../../components/Cover';
-import { Container, Info, Title } from './styles';
+import {
+  Container, Info, Title, Cover,
+} from './styles';
 
 import ListAlbuns from '../../components/ListAlbuns';
 
 class Artist extends Component {
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    const { token, artistRequest } = this.props;
-    artistRequest(id, token);
+  static propTypes = {
+    token: PropTypes.string.isRequired,
+    artistRequest: PropTypes.func.isRequired,
+  };
+
+  async componentWillMount() {
+    const {
+      match: {
+        params: { id },
+      },
+      token,
+      artistRequest,
+    } = this.props;
+    await artistRequest(id, token);
   }
 
+  renderInfo = () => {
+    const {
+      artist: {
+        info: {
+          images, name, popularity, followers, genres,
+        },
+        albums,
+      },
+    } = this.props;
+    if (name) {
+      return (
+        <div>
+          <Info>
+            <Cover images={images} />
+            <div>
+              <Title>{name}</Title>
+              <strong>{`Popularity ${popularity}`}</strong>
+              <small>{`${followers.total} followers`}</small>
+              <small>{genres.join(', ')}</small>
+            </div>
+          </Info>
+          <ListAlbuns albums={albums} />
+        </div>
+      );
+    }
+  };
+
   render() {
-    console.tron.log(this.props.artist);
-    return (
-      <Container className="page__padding">
-        <Info>
-          <Cover images={[]} />
-          <div>
-            <Title>Imagine Dragons</Title>
-            <strong>Popularity 89</strong>
-            <small>200 followers</small>
-            <small>irish rock, rock</small>
-          </div>
-        </Info>
-        {/* <ListAlbuns data={items} /> */}
-      </Container>
-    );
+    return <Container className="page__padding">{this.renderInfo()}</Container>;
   }
 }
 
