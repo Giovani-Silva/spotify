@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -19,6 +20,16 @@ import {
 } from './styles';
 
 class Main extends Component {
+  static propTypes = {
+    state: PropTypes.shape({
+      token: PropTypes.shape({
+        accessToken: PropTypes.string,
+      }),
+    }).isRequired,
+    saveToken: PropTypes.func.isRequired,
+    meInfoRequest: PropTypes.func.isRequired,
+  };
+
   async componentWillMount() {
     await this.getAccessToken();
   }
@@ -31,7 +42,7 @@ class Main extends Component {
 
   getAccessToken = async () => {
     const { accessToken: token } = this.props.state.token;
-    const { saveToken } = this.props;
+    const { saveToken, meInfoRequest } = this.props;
 
     if (!token) {
       const url = window.location.href;
@@ -42,7 +53,7 @@ class Main extends Component {
       await saveToken(accessToken[1]);
       window.history.replaceState(null, null, window.location.pathname);
 
-      this.props.meInfoRequest(this.props.state.token.accessToken);
+      meInfoRequest(this.props.state.token.accessToken);
     }
   };
 
