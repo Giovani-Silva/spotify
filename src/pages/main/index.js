@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ls from 'local-storage';
 
 import Routes from '../../routes';
 import { Creators as TokenActions } from '../../store/ducks/token';

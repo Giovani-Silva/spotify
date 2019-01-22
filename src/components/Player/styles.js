@@ -1,18 +1,23 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
+import { device } from '../../styles/metrics';
 
 export const Container = styled.div`
   width: 100%;
-  height: 6rem;
+  height: 4rem;
   color: inherit;
   background: ${colors.black};
   padding: 0.8rem;
   position: fixed;
   bottom: 0;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
+  transition: height ease-out 0.2s;
+
+  @media ${device.tablet} {
+    height: 6rem;
+  }
 `;
 
 export const Current = styled.div`
@@ -54,8 +59,13 @@ export const Controls = styled.div`
 `;
 
 export const Control = styled.div`
-  display: flex;
   align-items: center;
+  &:not(:nth-child(3)) {
+    display: none;
+  }
+  @media ${device.tablet} {
+    display: flex !important;
+  }
 
   button {
     background: transparent;
@@ -65,9 +75,13 @@ export const Control = styled.div`
 `;
 
 export const Time = styled.div`
-  display: flex;
   align-items: center;
   margin-top: 10px;
+  display: none;
+  @media ${device.tablet} {
+    display: flex;
+    max-width: 75%;
+  }
 
   span {
     font-size: 0.7rem;
@@ -81,10 +95,13 @@ export const ProgressSlider = styled.div`
 `;
 
 export const Volume = styled.div`
-  display: flex;
   align-items: center;
   width: 100px;
   margin-right: 20px;
+  display: none;
+  @media ${device.tablet} {
+    display: flex;
+  }
 
   img {
     margin-right: 5px;
