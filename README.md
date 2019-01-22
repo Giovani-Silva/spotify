@@ -20,7 +20,7 @@ Instal
 Run
 `yarn start`
 
-![app](Screenshot_1.jpg){ width=50% }
+![app](Screenshot_1.jpg)
 Search for Artist
 
 ![app](Screenshot_2.jpg)
