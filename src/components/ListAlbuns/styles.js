@@ -36,7 +36,7 @@ export const Playlist = styled(Link)`
   text-decoration: none;
   color: ${colors.light};
   max-width: 12.5rem;
-  margin: 0 2rem 2rem;
+  margin: 0 1.2rem 2rem;
 
   &:hover  div {
       opacity: 0.8;
@@ -77,6 +77,8 @@ export const Playlist = styled(Link)`
 export const Cover = styled.div`
   width: 200px;
   height: 200px;
+  min-width: 200px;
+  min-height: 200px;
   max-width: 300px;
   max-height: 300px;
   background-color: ${colors.dark};

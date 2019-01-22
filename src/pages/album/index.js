@@ -26,24 +26,42 @@ class AlbumDetail extends Component {
 
   renderinfoAlbum = () => {
     const {
-      album: { tracks },
+      selected: { album },
     } = this.props;
 
     return (
       <Info>
-        <Cover images={[]} />
+        <Cover images={album.images} />
         <div>
           <small>Album</small>
-          <Title>Album</Title>
-          <strong>Artist</strong>
-          <small> 10 tracks</small>
+          <Title>{album.name}</Title>
+          <strong>{album.artists[0].name}</strong>
+          <small>{`${album.total_tracks} tracks`}</small>
           <button type="button">PLAY</button>
         </div>
       </Info>
     );
   };
 
-  renderTracks = () => {};
+  renderTracks = () => {
+    const {
+      selected: {
+        album, tracks
+      },
+    } = this.props;
+    if (!tracks.length) return false;
+    return tracks.map(({name, artists, duration_ms}) =>
+      (<tr>
+        <td>
+          <img src={`/${PlusIcon}`} alt="Play" />
+        </td>
+        <td>{name}</td>
+        <td>{artists[0].name}</td>
+        <td>{album.name}</td>
+        <td>{duration_ms}</td>
+      </tr>)
+    );
+  };
 
   render() {
     return (
@@ -59,17 +77,7 @@ class AlbumDetail extends Component {
               <img src={`/${ClockIcon}`} alt="Duration" />
             </th>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img src={`/${PlusIcon}`} alt="Play" />
-              </td>
-              <td>Believe</td>
-              <td>Imagine Dragons</td>
-              <td>Origins</td>
-              <td>3:02</td>
-            </tr>
-          </tbody>
+          <tbody>{this.renderTracks()}</tbody>
         </SongList>
       </Container>
     );
@@ -78,7 +86,7 @@ class AlbumDetail extends Component {
 
 const mapStateToProps = state => ({
   token: state.token.accessToken,
-  album: state.album,
+  selected: state.album,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(AlbumActions, dispatch);

@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 export const Info = styled.div`
   display: flex;
-  margin: 2rem 2rem 6rem;
+  margin: 2rem 0 6rem;
   div {
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 `;
@@ -38,6 +38,8 @@ export const Title = styled.h2`
 export const Cover = styled.div`
   width: 250px;
   height: 250px;
+  min-width: 200px;
+  min-height: 200px;
   max-width: 300px;
   max-height: 300px;
   background-color: ${colors.dark};
@@ -51,6 +53,7 @@ export const SongList = styled.table`
   width: 100%;
   text-align: left;
   margin-top: 1.5rem;
+  margin-bottom: 4rem;
 
   thead th {
     font-size: 0.8rem;

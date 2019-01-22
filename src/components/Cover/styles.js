@@ -5,6 +5,8 @@ import ArtistIcon from '../../assets/images/artist_icon.svg';
 export const Image = styled.div`
   width: 200px;
   height: 200px;
+  min-width: 200px;
+  min-height: 200px;
   max-width: 300px;
   max-height: 300px;
   background-color: ${colors.dark};
