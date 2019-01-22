@@ -23,19 +23,19 @@ const Sidebar = ({ me }) => {
           <li>
             <Link to="/search">
               <img src={SearchIcon} alt="search" />
-              Buscar
+              <span>Buscar</span>
             </Link>
           </li>
           <li>
             <Link to="/">
               <img src={HomeIcon} alt="home" />
-              Início
+              <span>Início </span>
             </Link>
           </li>
           <li>
             <Link to="/library">
               <img src={LibraryIcon} alt="library" />
-              Sua Biblioteca
+              <span>Sua Biblioteca </span>
             </Link>
           </li>
         </Nav>
@@ -54,9 +54,9 @@ const Sidebar = ({ me }) => {
       </div>
 
       {display_name && (
-        <Profile to="/me" exact>
+        <Profile to="/me">
           <img alt="avatar" src={images && images.length ? images[0].url : ''} />
-          {display_name}
+          <span>{display_name}</span>
         </Profile>
       )}
     </Container>

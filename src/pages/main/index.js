@@ -21,13 +21,7 @@ import {
 
 class Main extends Component {
   async componentWillMount() {
-    console.log('will');
     await this.getAccessToken();
-  }
-
-  componentDidMount() {
-    // this.props.meRequest(this.props.state.token)
-    console.log('Did');
   }
 
   redirectToSpotifyLogin = () => window.location.replace(
@@ -48,7 +42,7 @@ class Main extends Component {
 
       await saveToken(accessToken[1]);
       window.history.replaceState(null, null, window.location.pathname);
-      console.log('replaceState', this.props.state.token);
+
       this.props.meInfoRequest(this.props.state.token.accessToken);
     }
   };

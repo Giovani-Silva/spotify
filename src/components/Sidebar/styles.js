@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import { Link as NavLink } from 'react-router-dom';
 
 import { colors } from '../../styles/colors';
+import { device } from '../../styles/metrics';
 
 export const Container = styled.aside`
   color: coral;
   background: ${colors.black};
   color: ${colors.lighten};
-  min-width: 13rem;
-  max-width: 20rem;
+  @media ${device.tablet} {
+    min-width: 13rem;
+    max-width: 20rem;
+  }
 
   flex: 1;
   display: flex;
@@ -29,18 +32,25 @@ export const Title = styled.h2`
 export const Nav = styled.ul`
   list-style: none;
   &:not(:first-child) {
-    margin-top: 1.5rem;
+    display: none;
+    @media ${device.tablet} {
+      margin-top: 1.5rem;
+      display: initial;
+    }
   }
 
   li {
     position: relative;
 
     span {
-      color: ${colors.regular};
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 1.11px;
-      font-weight: 300;
+      font-size: 0.0001px;
+      @media ${device.tablet} {
+        color: ${colors.regular};
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1.11px;
+        font-weight: 300;
+      }
     }
   }
 `;
@@ -56,6 +66,10 @@ export const Link = styled(NavLink)`
   padding: 0.6rem;
   font-weight: ${props => (props.main ? 'bold' : 'normal')};
   opacity: 0.7;
+  justify-content: center;
+  @media ${device.tablet} {
+    justify-content: flex-start;
+  }
 
   &:hover,
   &.active {
@@ -63,19 +77,13 @@ export const Link = styled(NavLink)`
     color: ${colors.white};
   }
 
-  /* &.active:before {
-    content: '';
-    width: 6px;
-    height: 100%;
-    background: ${colors.success};
-    position: absolute;
-    left: -1rem;
-  } */
-
   img {
     width: 24px;
     height: 24px;
     margin-right: 0.8rem;
+  }
+  span {
+    color: ${colors.light} !important;
   }
 `;
 
@@ -89,17 +97,31 @@ export const Profile = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 25px;
+  padding: 15px;
   transition: color 0.5s ease-out;
+  @media ${device.tablet} {
+    padding: 15px 25px;
+  }
 
   &:hover {
     color: ${colors.white};
   }
 
   img {
-    width: 2rem;
-    height: 2rem;
     border-radius: 50%;
-    margin-right: 10px;
+    width: 100%;
+    max-width: 2rem;
+
+    @media ${device.tablet} {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 10px;
+    }
+  }
+  span {
+    display: none;
+    @media ${device.tablet} {
+      display: initial;
+    }
   }
 `;
