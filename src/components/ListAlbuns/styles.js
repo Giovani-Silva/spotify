@@ -16,7 +16,7 @@ export const List = styled.div`
   margin-bottom: 7rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
 
   &:after {
     flex: 1 1 100%;
@@ -36,7 +36,7 @@ export const Playlist = styled(Link)`
   text-decoration: none;
   color: ${colors.light};
   max-width: 12.5rem;
-  margin: 0 1.2rem 2rem;
+  margin: 0 1rem 2rem;
 
   &:hover  div {
       opacity: 0.8;

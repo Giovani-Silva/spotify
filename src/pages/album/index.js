@@ -9,7 +9,7 @@ import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
 
 import {
-  Container, Info, Cover, Title, SongList,
+  Container, Info, Cover, Title, SongList, OverFlow
 } from './styles';
 
 class AlbumDetail extends Component {
@@ -48,12 +48,12 @@ class AlbumDetail extends Component {
       selected: { album, tracks },
     } = this.props;
     if (!tracks.length) return false;
-    return tracks.map(({ name, artists, duration_ms }) => (
-      <tr>
+    return tracks.map(({ track_number, name, artists, duration_ms }) => (
+      <tr key={track_number}>
         <td>
           <img src={`/${PlusIcon}`} alt="Play" />
         </td>
-        <td>{name}</td>
+        <td className="track">{name}</td>
         <td>{artists[0].name}</td>
         <td>{album.name}</td>
         <td>{this.msToTime(duration_ms)}</td>
@@ -73,10 +73,11 @@ class AlbumDetail extends Component {
     return (
       <Container className="page__padding">
         {this.renderinfoAlbum()}
+        <OverFlow>
         <SongList cellPadding={0} cellSpacing={0}>
           <thead>
             <th />
-            <th>Track</th>
+            <th className="track">Track</th>
             <th>Artist</th>
             <th>Album</th>
             <th>
@@ -85,6 +86,7 @@ class AlbumDetail extends Component {
           </thead>
           <tbody>{this.renderTracks()}</tbody>
         </SongList>
+        </OverFlow>
       </Container>
     );
   }

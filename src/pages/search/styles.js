@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
+import { device } from '../../styles/metrics';
 
 export const Container = styled.section`
   flex: 1;
@@ -24,8 +25,14 @@ export const BoxSearch = styled.div`
     position: absolute;
     left: 64px;
     top: 32px;
-    opacity: 0.4;
     transition: opacity 0.2s ease-out;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s ease-out;
+    @media ${device.tablet} {
+      display: initial;
+      opacity: 0.4;
+    }
   }
 
   input[type='text'] {
@@ -35,11 +42,19 @@ export const BoxSearch = styled.div`
     width: calc(100% - 30px);
     margin: 15px;
     height: 64px;
-    padding-left: 84px;
+
     padding-bottom: 14px;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 700;
     color: ${colors.white};
+    transition: all ease-out 0.2s;
+    @media ${device.tablet} {
+      font-size: 1.6rem;
+      padding-left: 84px;
+    }
+    @media ${device.laptop} {
+      font-size: 2rem;
+    }
 
     &:focus {
       border-color: ${colors.white};

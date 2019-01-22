@@ -7,6 +7,7 @@ import { Creators as SearchActions } from '../../store/ducks/search';
 import Filters from '../../components/Filters';
 import ListAlbuns from '../../components/ListAlbuns';
 import ListArtists from '../../components/ListArtists';
+import ListTracks from '../../components/ListTracks';
 
 import { Container, BoxSearch } from './styles';
 import SearchIcon from '../../assets/images/search.svg';
@@ -69,9 +70,7 @@ class Search extends Component {
 
         {!!data.length && type === 'albums' && <ListAlbuns albums={data} />}
 
-        {/* {!!this.props.search.data.length && this.state.selectedType === 'track' && (
-          <ListAlbuns albuns={this.props.search.data} />
-        )} */}
+        {!!data.length && type === 'tracks' && <ListTracks tracks={data} />}
       </Container>
     );
   }

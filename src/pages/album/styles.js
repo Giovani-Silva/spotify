@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
+import { device } from '../../styles/metrics';
 import ArtistIcon from '../../assets/images/artist_icon.svg';
 
 export const Container = styled.div`
@@ -8,11 +9,29 @@ export const Container = styled.div`
 export const Info = styled.div`
   display: flex;
   margin: 2rem 0 6rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 380px;
+  width: 60%;
+
+  @media ${device.laptop} {
+    margin: 2rem;
+    width: auto
+    flex-direction: row;
+    min-height: initial;
+    justify-content: flex-start;
+  }
+
   div {
     display: flex;
     flex-direction: column;
     margin-left: 2rem;
     justify-content: center;
+    align-items: center;
+    @media ${device.laptop} {
+      align-items: flex-start;
+    }
     button {
       background: ${colors.success};
       width: 6rem;
@@ -33,6 +52,9 @@ export const Title = styled.h2`
   font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+`;
+export const OverFlow = styled.div`
+  overflow-x: auto;
 `;
 
 export const Cover = styled.div`
