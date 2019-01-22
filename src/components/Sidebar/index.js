@@ -45,10 +45,10 @@ const Sidebar = ({ me }) => {
             <span>Tocadas recentemente</span>
           </li>
           <li>
-            <Link to="/playlist/1">As melhores do rock</Link>
+            <Link to="/">As melhores do rock</Link>
           </li>
           <li>
-            <Link to="/playlist/2">Top Rock 2018</Link>
+            <Link to="/">Top Rock 2018</Link>
           </li>
         </Nav>
       </div>

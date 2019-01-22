@@ -1,4 +1,4 @@
 node_modules
 public
 .env
-src/config/keys.js
+src/config/key.js
