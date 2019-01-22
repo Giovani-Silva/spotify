@@ -45,22 +45,28 @@ class AlbumDetail extends Component {
 
   renderTracks = () => {
     const {
-      selected: {
-        album, tracks
-      },
+      selected: { album, tracks },
     } = this.props;
     if (!tracks.length) return false;
-    return tracks.map(({name, artists, duration_ms}) =>
-      (<tr>
+    return tracks.map(({ name, artists, duration_ms }) => (
+      <tr>
         <td>
           <img src={`/${PlusIcon}`} alt="Play" />
         </td>
         <td>{name}</td>
         <td>{artists[0].name}</td>
         <td>{album.name}</td>
-        <td>{duration_ms}</td>
-      </tr>)
-    );
+        <td>{this.msToTime(duration_ms)}</td>
+      </tr>
+    ));
+  };
+
+  msToTime = (duration) => {
+    let sec = parseInt((duration / 1000) % 60, 10);
+    const min = parseInt((duration / (1000 * 60)) % 60, 10);
+    sec = sec < 10 ? `0${sec}` : sec;
+
+    return `${min}:${sec}`
   };
 
   render() {
