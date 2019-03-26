@@ -1,19 +1,21 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
-const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: ['regenerator-runtime/runtime', path.resolve(__dirname, 'src', 'index.js')],
   output: {
     path: path.resolve(__dirname, 'public'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'public'),
+    watchContentBase: true,
     historyApiFallback: true,
     compress: true,
     open: true,
@@ -56,6 +58,11 @@ module.exports = {
         },
       },
     },
+    minimizer: [
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
+      }),
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -63,14 +70,10 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     new HtmlWebpackPlugin({
-      title: 'Spotify',
+      title: 'Football',
       template: 'src/assets/tpl_index.html',
     }),
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: false,
-    }),
+    new Dotenv(),
     new OptimizeCSSAssetsPlugin({}),
   ],
 };

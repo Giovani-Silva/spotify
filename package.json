@@ -1,7 +1,7 @@
 {
-  "name": "hiPlataform",
+  "name": "spotify_concept",
   "version": "1.0.0",
-  "description": "Hi Platform Front-End Challenge",
+  "description": "Spotify App Concept",
   "main": "index.js",
   "license": "MIT",
   "author": "Giovani Silva",
@@ -44,7 +44,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "uglifyjs-webpack-plugin": "^2.1.1",
+    "terser-webpack-plugin": "^1.2.2",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
