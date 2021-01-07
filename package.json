@@ -10,7 +10,7 @@
     "start": " webpack-dev-server --mode development  --port 3000"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "local-storage": "^1.4.2",
     "dotenv-webpack": "^1.7.0",
     "prop-types": "^15.6.2",
